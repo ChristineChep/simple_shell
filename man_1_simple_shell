@@ -1,0 +1,328 @@
+.\" SIMPLE SHELL.
+
+.\" Contact jackson-muendo or christinechep on GitHub to correct errors or typos.
+
+.TH man 1 "10 April 2020" "1.0" "SIMPLE SHELL"
+
+.SH NAME
+
+simple_shell \- run a basic shell. Command interpreter.
+
+.SH SYNOPSIS
+
+   #include <stdio.h>
+
+   #include <stdlib.h>
+
+   #include <sys/types.h>
+
+   #include <sys/wait.h>
+
+   #include <string.h>
+
+
+
+   int main(int ac, char *av[], char **env);
+
+
+
+   where ac is an unussed variable, av is the content of the argument and env is the evironment of the program.
+
+
+
+.SH DESCRIPTION
+
+    simple_shell is the standard command interpreter for the system. It is a program that runs a basic shell.
+Display a prompt and wait for the user to type a command. A command line always ends with a new line.
+
+    The prompt is displayed again each time a command has been executed.
+
+    The command lines are simple, no semicolons, no pipes, no redirections or any other advanced features.
+
+    It handles arguments with the commands.
+
+    The simple_shell shows error messages when a typing error occurs.
+
+.SH OPTIONS
+
+    Simple Shell manges to be executed. The interactive and non-interactive. The second one is for look the results outside t    he program.
+
+    All the commands has its own flags and options and this version manage the path of the directory where we need to use the 	 command.
+
+BUILT-INS
+
+	exit and env.
+
+.SH EXIT STATUS
+
+     Errors that are detected by the shell, such as a syntax error, will cause the shell to
+
+     exit with a non-zero exit status.  If the shell is not an interactive shell, the execu-
+
+     tion of the shell file will be aborted.  Otherwise the shell will return the exit status
+
+     of the last command executed, or if the exit builtin is used with a numeric argument, it
+
+     will return the argument.
+
+
+
+.SH ENVIRONMENT
+
+
+
+    LESSOPEN	this variable is to tell the less program how to guess and read different types of files. In principle, less                 read just ASCII files, so a command like less package.tar will produce an error. The "old" way to do is was t                o untar the file package.tar and pipe the result to less, so we just see the list of files in the package.tar                archive.
+
+
+
+    MAIL	The name of a mail file, that will be checked for the arrival of new mail.  Overridden by
+
+                MAILPATH.
+
+
+
+    SSH_CLIENT	The SSH client's IP address, followed by space, followed by port number. The SSH Server does set this for com                mands executed in service context.
+
+
+
+    USER	the SSH Server sets this to the account name portion (without domain) of the user's full account name. The SS		     H Server does not set this for commands executed in service context.
+
+
+
+    SHLVL	holds the number of shell levels the current shell is running on top of. In a new terminal window, executing 		     the following command will produce different results based on the Linux distribution in use.
+
+
+
+    LD_LIBRARY_PATH   is a colon-separated (:) set of directories where libraries are searched for first before the standard 		     	 	   set of directories.
+
+
+
+    HOME       Set automatically by login(1) from the user's login directory in the password file
+
+                (passwd(4)).  This environment variable also functions as the default argument for the cd
+
+                builtin.
+
+    OLDPWD     The previous logical value of the current working directory.  This is set by the cd com-
+
+                mand.
+
+
+
+    SSH_TTY	specifies the device node of the current virtual terminal (e.g. /dev/pts/25 ). The SSH_CONNECTION is set to i                p and port on client and on host machine (4 fields separated by whitespace)
+
+
+
+    LC_CTYPE	are special environment variables which after they got exported to the shell environment ( help export ), the		     y are available and ready to be read by certain programs which supports a locale (natural language formatting                for C).
+
+
+
+    LOGNAME	Login name.
+
+
+
+    _		the command line of the last command executed.
+
+
+
+    XDG_SESSION_ID
+
+
+
+    TERM       The default terminal setting for the shell.  This is inherited by children of the shell,
+
+                and is used in the history editing modes.
+
+
+
+    PATH       The default search path for executables.  See the above section Path Search.
+
+
+
+    XDG_RUNTIME_DIR
+
+
+
+    GLIBCPP_FORCE_NEW
+
+
+
+    LANG	or specifying a locale. As a user, you normally set this variable (unless some of the other variables have al                ready been set by the system, in /etc/profile or similar initialization files).
+
+LS_COLORS	is responsible for the colors that you see when you run the ls command.
+SHELL	contains the path of the shell.
+
+
+
+    LESSCLOSE
+
+
+
+    PWD        The logical value of the current working directory.  This is set by the cd command.
+
+
+
+    SSH_CONNECTION shows the address of the client, the outgoing port on the client, the address of the server and the incomi                   ng port on the server
+
+
+
+    GLIBCXX_FORCE_NEW
+
+
+
+    LD_PRELOAD	containing one or more paths to shared libraries, or shared objects, that the loader will load before any oth                er shared library including the C runtime library (libc.so)
+
+
+
+
+
+.SH EXAMPLES
+
+
+
+Non-interactive mode:
+
+
+
+simple_shell:$ echo "/bin/ls" | ./hsh
+
+AUTHORS   hsh                 #README.md#  atoi.c      child.c   handlesignint.c  readline.c
+
+header.h  man_1_simple_shell  README.md    builtins.c  getenv.c  main.c            tokens.c
+
+simple_shell:$ echo $?
+
+0
+
+simple_shell:$
+
+
+
+Interactive mode:
+
+
+
+simple_shell:$ ./hsh
+
+$ /bin/ls -1
+
+AUTHORS
+
+header.h
+
+hsh
+
+man_1_simple_shell
+
+README.md
+
+atoi.c
+
+builtins.c
+
+child.c
+
+getenv.c
+
+handlesignint.c
+
+main.c
+
+readline.c
+
+tokens.c
+
+$
+
+
+
+Ctrl+C
+
+
+
+simple_shell:$ ./hsh
+
+$ ^C
+
+$ ^C
+
+$ ^C
+
+
+
+Exit + arguments
+
+
+
+simple_shell:$ ./hsh
+
+$ exit 98
+
+simple_shell:$ echo $?
+
+98
+
+simple_shell:$
+
+
+
+Crtl+D
+
+
+
+simple_shell:$ ./hsh
+
+$
+
+simple_shell:$ echo $?
+
+0
+
+simple_shell:$
+
+
+
+Environment list.
+
+
+
+simple_shell:$ ./hsh
+
+$ env
+
+XDG_SESSION_ID=3
+
+TERM=xterm-256color
+
+SHELL=/bin/bash
+
+SSH_CLIENT=10.0.2.2 50804 22
+
+SSH_TTY=/dev/pts/1
+
+USER=vagrant
+
+..continue...
+
+
+
+.SH SEE ALSO
+
+man (2) sh
+
+
+
+.SH BUGS
+
+No known bugs.
+
+
+
+.SH AUTHORS
+
+Christine Chepkoech (ChristineChep on GitHub).
+
+Jackson Muendo (jackson-muendo on GitHub).
+
+
+
