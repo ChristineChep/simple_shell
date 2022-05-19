@@ -3,7 +3,6 @@
 /**
  * built_in - "function that converts strings to integers.
  * @s: String to compare.
- * 
  * Return: Always 0.
  */
 
@@ -26,7 +25,6 @@ void _printenv(char **env)
  *
  * Return: Always 0.
  */
-
 int built_in(char *strtocmp, char **env_link)
 {
 	int i = 0, temp = 0, status;
@@ -71,7 +69,6 @@ int built_in(char *strtocmp, char **env_link)
  *
  * Return: Always 0.
  */
-
 int built_in(char *strtocmp, char **env_link)
 {
 	int i = 0, temp = 0, status;
