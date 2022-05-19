@@ -1,11 +1,10 @@
 #include "header.h"
 
-
-
 /**
- * built_in - function that compares two strings and execute the built-in
+ * built_in - function that compares two strings and execute the built-in.
  * @strtocmp: String to compare.
  * @env_link: link to environ.
+ *
  * Return: Always 0.
  */
 
